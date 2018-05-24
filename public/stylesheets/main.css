@@ -1,0 +1,22 @@
+.card-img-top {
+    margin-bottom: 5px;
+    border: black solid 1px;
+}
+
+#card-image {
+    margin-bottom: 1.5em;
+}
+
+#navbar {
+    margin-bottom: 3em;
+}
+
+.card-text {
+    margin: 1em;
+}
+
+.right-btn {
+    display: inline;
+    float: right;
+    margin-left: 0.4em;
+}
