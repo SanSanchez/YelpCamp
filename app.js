@@ -54,3 +54,5 @@ app.use("/", indexRoutes);
 app.listen(3000, process.env.IP, () => {
     console.log("The Yelp Camp Server has started");
 });
+
+// TODO: Find instances where flash would be appropriate and correspondingly put them in.
