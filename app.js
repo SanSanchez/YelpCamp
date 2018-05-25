@@ -9,7 +9,7 @@ const bodyParser    = require("body-parser"),
     User            = require(__dirname + "/models/user.js"),
     seedDB          = require(__dirname + "/seeds.js"),
     app             = express(),
-    seed            = true;
+    seed            = false;
 
 const commentRoutes     = require(__dirname + "/routes/comments"),
     campgroundRoutes    = require(__dirname + "/routes/campgrounds"),
@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
+
 // Passport Config
 app.use(require("express-session")({
     secret: "Today is a good day",
