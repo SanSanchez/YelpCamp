@@ -6,10 +6,20 @@ const bodyParser    = require("body-parser"),
     LocalStrategy   = require("passport-local"),
     methodOverride  = require("method-override"),
     flash           = require("connect-flash"),
+    nodeGeocoder    = require('node-geocoder'),
     User            = require(__dirname + "/models/user.js"),
     seedDB          = require(__dirname + "/seeds.js"),
     app             = express(),
     seed            = false;
+
+const options = {
+    provider: 'google',
+    httpAdapter: 'https',
+    apiKey: process.env.GEOCODER_API_KEY,
+    formatter: null
+};
+
+const geocoder = nodeGeocoder(options);
 
 const commentRoutes     = require(__dirname + "/routes/comments"),
     campgroundRoutes    = require(__dirname + "/routes/campgrounds"),
