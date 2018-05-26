@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
             console.log("Error in loading /campgrounds");
             res.redirect("/campgrounds");
         } else {
-            res.render("campgrounds/index", {campgrounds: allCampgrounds});
+            res.render("campgrounds/index", {campgrounds: allCampgrounds, page: "campgrounds"});
         }
     });
 });

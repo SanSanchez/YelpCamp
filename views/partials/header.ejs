@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Make site responsive on mobile/tablet -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Yelp Camp</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
-<!--FIXME: Fix navbar: Dropdown menu doesn't properly list its options.-->
+<!-- FIXME: Fix navbar: Dropdown menu doesn't properly list its options.-->
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,33 +32,27 @@
             <% } else {%>
             <li class="nav-item">
             <li class="nav-item">
-                <a class="nav-link" href="#">Signed In As <%= signedUser.username %></a>
+                <a class="nav-link" href="#">Signed In As <strong><%= signedUser.username %></strong></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"href="/logout">Logout</a>
             </li>
             <% } %>
         </ul>
-        <!--<form class="form-inline my-2 my-lg-0">-->
-            <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-            <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-        <!--</form>-->
     </div>
 </nav>
 
-
-
 <% if (error && error.length > 0) {%>
-    <div class="container">
+    <div class="container flash-text">
         <div class="alert alert-danger" role="alert">
-            <%= error %>
+            <span><%= error %></span>
         </div>
     </div>
 <% }%>
 <% if (success && success.length > 0) {%>
-    <div class="container">
+    <div class="container flash-text">
         <div class="alert alert-success" role="alert">
-            <%= success %>
+            <span><%= success %></span>
         </div>
     </div>
 <% }%>
