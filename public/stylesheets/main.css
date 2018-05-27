@@ -25,6 +25,12 @@ nav {
     text-align: center;
 }
 
+/* Show Page CSS Start */
+
+#new-comment-body {
+    border-left: 5px solid #00C851;
+}
+
 #map {
     height: 400px;
     width: 100%;
@@ -34,3 +40,22 @@ nav {
 #show-list {
     margin-bottom: 1em;
 }
+
+#no-comments-text {
+    color: grey;
+}
+
+#user-icon {
+    color: orange;
+}
+
+#edit-comment-body {
+    border-left: 5px solid #ffbb33;
+    margin-top: 15px;
+}
+
+#delete-form {
+    display: inline;
+}
+
+/* Show Page CSS End */
