@@ -42,23 +42,43 @@ Let users change their name,see all their postings, and possibly even see a news
                  <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
                 </div>
             </div>
+            <!--Comment Section Start-->
             <% campground.comments.forEach((comment) => { %>
-                <div class="card-footer">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <strong><%= comment.author.username %></strong>
-                            <span class="float-right"> <%= moment(comment.createdAt).fromNow() %> </span>
-                            <p><%= comment.text %></p>
-                            <% if (signedUser && comment.author.id.equals(signedUser._id)) { %>
-                                <a href="/campgrounds/<%= campground._id%>/comments/<%= comment._id %>/edit"
-                                   class="btn btn-sm btn-warning right-btn">Edit</a>
-                                <form class="right-btn" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id%>?_method=DELETE" method="POST">
-                                    <button class="btn btn-sm btn-danger" type="submit">Delete</button>
-                                </form>
-                            <% } %>
-                        </div>
+            <div class="card-footer">
+                <!--Setting up the add new comment button that is used for collapsing-->
+                <div class="text-right">
+                    <a class="btn btn-success pull-right" role="button" data-toggle="collapse" href="#collapseComment" aria-expanded="false" aria-controls="collapseComment">
+                        <span aria-hidden="true"><i class="fas fa-plus"></i></span> Add new comment</a>
+                </div>
+
+                <!--Comment section title-->
+                <h4><strong>Comments <span aria-hidden="true"><i class="fas fa-comment"></i></span></strong></h4>
+
+                <!--Collapse Add a comment form START-->
+                <div class="collapse" id="collapseComment">
+                    <div class="card-footer" style="border-left: 5px solid #00C851;">
+                        <% if(!signedUser) { %>
+                        <!--If the user is not logged in, direct him to the login page-->
+                        <h5>You need to login before you can comment. <a href="/login">Click here</a> to go to the login page.</h5>
+                        <% } %>
+                        <% if(signedUser) { %>
+                        <!--If the user is logged in, show the new comment form-->
+                        <h4>Write your comment <span aria-hidden="true"><i class="fas fa-pencil-alt"></i></span></h4>
+                        <form id="add-comment-form" action="/campgrounds/<%= campground._id %>/comments" method="POST">
+                            <div class="form-group">
+                                <input class="form-control" type="text" disabled value="<%= signedUser.username %>">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="comment[text]" placeholder="Write your comment..." form="add-comment-form" rows="5" cols="70"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success btn-sm">Comment <span aria-hidden="true"><i class="far fa-comment"></i></span></button>
+                            </div>
+                        </form>
+                        <% } %>
                     </div>
                 </div>
+                <!--Collapse Add a comment form END-->
             <% }); %>
         </div>
     </div>
@@ -101,3 +121,24 @@ Let users change their name,see all their postings, and possibly even see a news
 </script>
 <!--Footer Section-->
 <% include ../partials/footer.ejs %>
+
+
+
+
+
+    <!--<div class="card-footer">-->
+    <!--<div class="row">-->
+    <!--<div class="col-md-12">-->
+    <!--<strong><%= //comment.author.username %></strong>-->
+    <!--<span class="float-right"> <%= //moment(comment.createdAt).fromNow() %> </span>-->
+    <!--<p><%= //comment.text %></p>-->
+    <!--<% //if (signedUser && comment.author.id.equals(signedUser._id)) { %>-->
+    <!--<a href="/campgrounds/<%= //campground._id%>/comments/<%= //comment._id %>/edit"-->
+    <!--class="btn btn-sm btn-warning right-btn">Edit</a>-->
+    <!--<form class="right-btn" action="/campgrounds/<%= //campground._id %>/comments/<%= //comment._id%>?_method=DELETE" method="POST">-->
+    <!--<button class="btn btn-sm btn-danger" type="submit">Delete</button>-->
+    <!--</form>-->
+    <!--<% //} %>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->

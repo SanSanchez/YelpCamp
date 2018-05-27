@@ -23,8 +23,6 @@ router.get("/", (req, res) => {
     });
 });
 
-//TODO: Learn the google-map api better.
-//TODO: Stress-test the new campground-creation route.
 router.post("/", middleware.isLoggedIn, (req, res) => {
     geocoder.geocode(req.body.campground.location, (err, data) => {
         if (err || !data.length) {
@@ -93,6 +91,7 @@ router.put("/:id", middleware.checkCampgroundOwnership, (req, res) => {
             console.log(data);
             return res.redirect('back');
         }
+
         req.body.campground.lat = data[0].latitude;
         req.body.campground.lng = data[0].longitude;
         req.body.campground.location = data[0].formattedAddress;
