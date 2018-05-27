@@ -3,6 +3,8 @@ const express   = require("express"),
     passport    = require("passport"),
     User        = require("../models/user");
 
+// TODO: Make it so that when a user logs in they are redirected back to the page they were on with the new information loaded.
+// TODO: When a user registers they should automatically login as well with the new information provided.
 router.get("/", (req, res) => {
     res.render("landing");
 });

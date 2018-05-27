@@ -28,7 +28,7 @@ module.exports = seedDB;
 function seedDB() {
     // Remove Current Campgrounds from DB.
     removeCampgrounds();
-    removeUsers();
+    // removeUsers();
 
     // Add new Campgrounds from data array.
     // populateCampgrounds();

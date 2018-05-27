@@ -7,7 +7,7 @@
     margin-bottom: 1.5em;
 }
 
-#navbar {
+nav {
     margin-bottom: 3em;
 }
 
@@ -28,4 +28,9 @@
 #map {
     height: 400px;
     width: 100%;
+    border-radius: 5px;
+}
+
+#show-list {
+    margin-bottom: 1em;
 }
