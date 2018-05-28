@@ -13,13 +13,23 @@ geocoder = nodeGeocoder({
 
 // Index Route
 router.get("/", (req, res) => {
-    Campground.find({}, (err, allCampgrounds) => {
-        if (err) {
-            console.log("Error in loading /campgrounds");
-            res.redirect("/campgrounds");
-        } else {
-            res.render("campgrounds/index", {campgrounds: allCampgrounds, page: "campgrounds"});
-        }
+    let perPage = 8,
+        pageQuery = parseInt(req.query.page),
+        pageNumber = pageQuery ? PageQuery : 1;
+
+    Campground.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec( (err, allCampgrounds) => {
+        Campground.count().exec( (err, count) => {
+            if (err) {
+                console.log("Error in loading /campgrounds");
+                res.redirect("/campgrounds");
+            } else {
+                res.render("campgrounds/index", {
+                    campgrounds: allCampgrounds,
+                    current: pageNumber,
+                    pages: Math.ceil(count / perPage)
+                });
+            }
+        });
     });
 });
 
