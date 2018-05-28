@@ -25,13 +25,15 @@ see what they're posting.-->
                     <em>
                         Submitted By:
                         <%= campground.author.username %>,
+                        <!--FIXME: Doesn't appropriately record the time the campground was created.
+                        (It's always "A few seconds ago")-->
                         <%= moment(campground.CreatedAt).fromNow() %>
                     </em>
                 </p>
                 <% if (signedUser && campground.author.id.equals(signedUser._id)) {%>
                     <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-sm btn-warning right-btn">Edit</a>
                     <form class="right-btn" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
-                        <!--TODO: Add extra dialog box for confirmation of delete.-->
+                        <!-- TODO: Add extra dialog box for confirmation of delete.-->
                         <button class="btn btn-sm btn-danger">Delete</button>
                     </form>
                 <% } %>
@@ -40,25 +42,25 @@ see what they're posting.-->
             <div class="card-footer">
                 <!--Setting up the add new comment button that is used for collapsing-->
                 <div class="text-right">
+                    <button type="button"class="btn btn-success pull-right" id="collapse-button">Collapse</button>
                     <a class="btn btn-success pull-right" role="button" data-toggle="collapse" href="#collapseComment"
                        aria-expanded="false" aria-controls="collapseComment">
-                        <span aria-hidden="true"><i class="fas fa-plus"></i></span>Add new comment
+                        <span aria-hidden="true"><i class="fas fa-plus"></i></span> Add new comment
                     </a>
                 </div>
 
                 <!--Comment section title-->
                 <h4><strong>Comments <span aria-hidden="true"><i class="far fa-comment"></i></span></strong></h4>
-                <!--FIXME-->
                 <!--Collapse Add a comment form START-->
                 <div class="collapse" id="collapseComment">
-                    <div class="card-footer" id="new-comment-body">
+                    <div class="card card-body" id="new-comment-body">
                         <% if(!signedUser) { %>
                         <!--If the user is not logged in, direct him to the login page-->
                         <h5>You need to login before you can comment.
                             <span><a href="/login">Click here</a></span> to go to the login page.</h5>
                         <% } %>
                         <% if(signedUser) { %>
-                        <!--If the user is logged in, show the new comment form-->
+                        If the user is logged in, show the new comment form
                         <h4>Write your comment <span aria-hidden="true"><i class="fas fa-pencil-alt"></i></span></h4>
                         <form id="add-comment-form" action="/campgrounds/<%= campground._id %>/comments" method="POST">
                             <div class="form-group">
@@ -86,7 +88,7 @@ see what they're posting.-->
                 <% } %>
 
                 <!--Display comments by looping through them-->
-                <% campground.comments.forEach(function(comment) { %>
+                <% campground.comments.forEach((comment) => { %>
                 <div class="row">
                     <div class="col-md-12">
                         <strong>
@@ -150,7 +152,6 @@ see what they're posting.-->
         </div>
     </div>
 </div>
-
 
 <!--Map Initiation Script. -->
 <!--Takes the Latitude and Longitude of the given campground location and sets them as the initial-->
