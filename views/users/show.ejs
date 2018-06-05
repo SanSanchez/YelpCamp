@@ -1,0 +1,28 @@
+<% include ../partials/header%>
+
+<div class="row">
+    <div class="col-md-4">
+        <h1><%= user.firstName + " " + user.lastName%></h1>
+        <div class="card">
+            <div class="card-img-top">
+                <img id="user-profile-picture" src="<%= user.avatar%>" alt="user profile image">
+            </div>
+            <div class="card-footer">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque doloribus ducimus eius eligendi
+                suscipit tempore temporibus? Accusamus atque, commodi, culpa dicta doloremque iure natus nesciunt perspiciatis quisquam repellat vel voluptatem.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <ul class="list-group">
+            <% campgrunds.forEach((campground) => { %>
+                <li class="list-group-item">
+                    <a href="/campgrounds/<%= campground._id %>"><%= campground.name %></a>
+                    <img src="<%= campground.image %>" alt="">
+                </li>
+            <%}) %>
+        </ul>
+    </div>
+</div>
+
+<% include ../partials/footer%>
