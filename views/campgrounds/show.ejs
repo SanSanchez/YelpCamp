@@ -24,7 +24,7 @@ see what they're posting.-->
                 <p>
                     <em>
                         Submitted By:
-                        <%= campground.author.username %>,
+                        <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a>,
                         <!--FIXME: Doesn't appropriately record the time the campground was created.
                         (It's always "A few seconds ago")-->
                         <%= moment(campground.CreatedAt).fromNow() %>
@@ -42,7 +42,6 @@ see what they're posting.-->
             <div class="card-footer">
                 <!--Setting up the add new comment button that is used for collapsing-->
                 <div class="text-right">
-                    <button type="button"class="btn btn-success pull-right" id="collapse-button">Collapse</button>
                     <a class="btn btn-success pull-right" role="button" data-toggle="collapse" href="#collapseComment"
                        aria-expanded="false" aria-controls="collapseComment">
                         <span aria-hidden="true"><i class="fas fa-plus"></i></span> Add new comment

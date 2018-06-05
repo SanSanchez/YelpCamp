@@ -3,6 +3,7 @@
     border: black solid 1px;
 }
 
+/*Make this more descriptive*/
 #card-image {
     margin-bottom: 1.5em;
 }
@@ -31,7 +32,7 @@ nav {
     margin-right: auto;
 }
 
-/* Show Page CSS Start */
+/* Campground Show Page CSS Start */
 
 #new-comment-body {
     border-left: 5px solid #00C851;
@@ -65,3 +66,8 @@ nav {
 }
 
 /* Show Page CSS End */
+
+#user-profile-picture {
+    height: 200px;
+    width: 100%;
+}
