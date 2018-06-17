@@ -67,7 +67,15 @@ nav {
 
 /* Show Page CSS End */
 
+/* User Profile Page CSS Start */
+
 #user-profile-picture {
     height: 200px;
     width: 100%;
 }
+
+#user-profile-name {
+    text-transform: capitalize;
+}
+
+/* User Profile Page CSS End */

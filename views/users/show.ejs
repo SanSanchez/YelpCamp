@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h1><%= user.firstName + " " + user.lastName%></h1>
+        <h1 id="user-profile-name"><%= user.firstName + " " + user.lastName%></h1>
         <div class="card">
             <div class="card-img-top">
                 <img id="user-profile-picture" src="<%= user.avatar%>" alt="user profile image">
@@ -17,7 +17,7 @@
         <ul class="list-group">
             <% campgrunds.forEach((campground) => { %>
                 <li class="list-group-item">
-                    <a href="/campgrounds/<%= campground._id %>"><%= campground.name %></a>
+                    <a href="/campgrounds/<%= campground._id %>"><h1><%= campground.name %></h1></a>
                     <img src="<%= campground.image %>" alt="">
                 </li>
             <%}) %>
